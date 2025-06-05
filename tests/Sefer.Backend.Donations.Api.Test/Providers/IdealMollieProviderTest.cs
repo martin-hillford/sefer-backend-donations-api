@@ -105,6 +105,7 @@ public class IdealMollieProviderTest
         Assert.IsNotNull(created);
         Assert.AreEqual(Method.Redirect, created.Method);
         Assert.AreEqual("http://checkoutlink", created.Url);
+        Assert.IsNull(created.Data);
     }
     
     [TestMethod]

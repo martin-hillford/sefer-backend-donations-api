@@ -20,12 +20,12 @@ public class DonationResponse
     /// <summary>
     /// The url the client must use to perform the action
     /// </summary>
-    public string Url { get; init; }
+    public required string Url { get; init; }
 
     /// <summary>
     /// Optional data to send to client
     /// </summary>
-    public object? Data { get; init; } = null;
+    public object? Data { get; init; }
     
     /// <summary>
     /// The id of payment as provided by the payment provider
@@ -42,4 +42,4 @@ public class DonationResponse
         new Donation { Amount = promise.Amount, Provider = promise.Provider, PaymentId = PaymentId, Id = donationId };
 }
 
-public enum Method { Redirect, Get, Post }
+public enum Method { Redirect, Get }

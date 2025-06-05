@@ -1,3 +1,5 @@
+// This is post model
+// ReSharper disable PropertyCanBeMadeInitOnly.Global
 namespace Sefer.Backend.Donations.Api.Models;
 
 public class DonationPromise
@@ -11,7 +13,7 @@ public class DonationPromise
     /// <summary>
     /// A description to be sent to be payment provider 
     /// </summary>
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
     /// <summary>
     /// The currency in which the donation is made

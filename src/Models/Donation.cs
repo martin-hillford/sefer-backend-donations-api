@@ -1,3 +1,5 @@
+// This is an entity model
+// ReSharper disable PropertyCanBeMadeInitOnly.Global
 namespace Sefer.Backend.Donations.Api.Models;
 
 /// <summary>
@@ -30,16 +32,16 @@ public class Donation
     /// Holds the payment id as communicated by mollie
     /// </summary>
     [MaxLength(int.MaxValue)]
-    public string PaymentId { get; set; }
+    public string PaymentId { get; set; } = string.Empty;
     
     /// <summary>
     /// The provider used for this payment
     /// </summary>
     [MaxLength(255)]
-    public string Provider { get; set; }
+    public string Provider { get; set; } = string.Empty;
     
     /// <summary>
     /// The currency this payment is in
     /// </summary>
-    public string Currency { get; set; }
+    public string Currency { get; set; } = "EUR";
 }
