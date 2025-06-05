@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Martin Hillford</Authors>
+    <Copyright>2016-2025, Martin Hillford</Copyright>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mollie.Api" Version="4.10.2" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Npgsql" Version="8.0.7" />
+    <PackageReference Include="Sefer.Backend.SharedConfig.Lib" Version="1.2.0" />
+    <PackageReference Include="Sefer.Backend.Support.Lib" Version="1.2.0" />
+    <PackageReference Include="Sefer.Backend.Authentication.Lib" Version="1.1.10" />
+  </ItemGroup>
+</Project>

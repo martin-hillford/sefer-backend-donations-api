@@ -1,0 +1,13 @@
+global using Microsoft.Extensions.Options;
+global using Mollie.Api.Models.Payment.Response;
+global using Moq;
+global using Sefer.Backend.Donations.Api.Models;
+global using Sefer.Backend.Donations.Api.Providers;
+global using Sefer.Backend.Donations.Api.Wrappers;
+global using Sefer.Backend.SharedConfig.Lib.Abstractions;
+global using Mollie.Api.Client;
+global using Mollie.Api.Models;
+global using Mollie.Api.Models.Payment.Request;
+global using Mollie.Api.Models.Url;
+global using Microsoft.AspNetCore.Http.HttpResults;
+global using Sefer.Backend.Donations.Api.Repositories;
