@@ -12,6 +12,12 @@ public static class Setup
         
         // Add the configuration 
         builder.Services.Configure<PaymentOptions>(builder.Configuration.GetSection("Payment"));
+        
+        // Add the services
+        builder.Services.AddSingleton<IDbConnectionProvider, DbConnectionProvider>();
+        builder.Services.AddSingleton<IMollieWrapper, MollieWrapper>();
+        builder.Services.AddSingleton<IPaymentProviderFactory, PaymentProviderFactory>();
+        builder.Services.AddSingleton<IDonationRepository, DonationRepository>();
 
         // build the app
         return builder.Build();

@@ -23,7 +23,7 @@ public static class Endpoints
         var donation = response.Create(donationId, promise);
         
         // And return the response
-        var inserted = await repository.Insert(donation);
+        var inserted = await repository.InsertAsync(donation);
         return !inserted ? Results.StatusCode(500) : Results.Json(donation);
     }
     

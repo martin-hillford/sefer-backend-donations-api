@@ -1,8 +1,8 @@
 namespace Sefer.Backend.Donations.Api.Repositories;
 
-public class DonationRepository(IServiceProvider serviceProvider) : IDonationRepository
+public class DonationRepository(IDbConnectionProvider connectionProvider) : IDonationRepository
 {
-    public async Task<bool> Insert(Donation donation)
+    public async Task<bool> InsertAsync(Donation donation)
     {
         try
         {
@@ -13,7 +13,8 @@ public class DonationRepository(IServiceProvider serviceProvider) : IDonationRep
             };
             const string query = "insert into donations (id, creation_date, status, amount, payment_id, provider, currency) " + 
                                  "values (@id, @creationDate @status, @amount, @paymentId, @provider, @currency )";
-            await GetConnection().ExecuteAsync(query, param);
+            var connection = connectionProvider.GetConnection();
+            await connection.ExecuteAsync(query, param);
             return true;
         }
         catch(Exception) { return false; }
@@ -23,9 +24,9 @@ public class DonationRepository(IServiceProvider serviceProvider) : IDonationRep
     
     private async Task<Donation?> GetById(string id)
     {
-        var connection = GetConnection();
+        var connection = connectionProvider.GetConnection();
         var donations = await connection.QueryAsync<Donation>($"select * from donations where id = @id", new { id  });
-        return donations.FirstOrDefault();
+        return donations.SingleOrDefault();
     }
 
     public async Task<bool> UpdateStatus(Donation? donation, PaymentStatus? status)
@@ -34,17 +35,10 @@ public class DonationRepository(IServiceProvider serviceProvider) : IDonationRep
         if (donation == null || status == null) return false;
         try
         {
-            await GetConnection().ExecuteAsync(query, new { id = donation.Id, status = (byte)status });
+            var connection = connectionProvider.GetConnection();
+            await connection.ExecuteAsync(query, new { id = donation.Id, status = (byte)status });
             return true;
         }
         catch(Exception) { return false; }
-    }
-    
-    private NpgsqlConnection GetConnection()
-    {
-        var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-        var connectionString = configuration.GetSection("Database").GetValue<string>("ConnectionString");
-        return new NpgsqlConnection(connectionString);
     }
 }

@@ -2,7 +2,7 @@ namespace Sefer.Backend.Donations.Api.Repositories;
 
 public interface IDonationRepository
 {
-    public Task<bool> Insert(Donation donation);
+    public Task<bool> InsertAsync(Donation donation);
 
     public Task<Donation?> GetById(Guid donationId);
 

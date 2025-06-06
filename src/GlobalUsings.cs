@@ -10,6 +10,7 @@ global using Sefer.Backend.Authentication.Lib;
 global using Sefer.Backend.SharedConfig.Lib;
 global using Sefer.Backend.SharedConfig.Lib.Abstractions;
 global using System.ComponentModel.DataAnnotations;
+global using System.Data;
 global using Microsoft.AspNetCore.Mvc;
 global using Mollie.Api.Client.Abstract;
 global using Mollie.Api.Models.Payment.Response;

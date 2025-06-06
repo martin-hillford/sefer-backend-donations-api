@@ -10,4 +10,5 @@ global using Mollie.Api.Models;
 global using Mollie.Api.Models.Payment.Request;
 global using Mollie.Api.Models.Url;
 global using Microsoft.AspNetCore.Http.HttpResults;
+global using Microsoft.Extensions.Configuration;
 global using Sefer.Backend.Donations.Api.Repositories;

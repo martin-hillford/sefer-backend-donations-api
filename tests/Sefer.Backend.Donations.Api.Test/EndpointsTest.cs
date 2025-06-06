@@ -65,7 +65,7 @@ public class EndpointsTest
             .ReturnsAsync(new DonationResponse { PaymentId = "payment-id", Method = Method.Get, Url = "example.com", Data = paymentProvider });
         
         var repository = new Mock<IDonationRepository>();
-        repository.Setup(r => r.Insert(It.IsAny<Donation>())).ReturnsAsync(true);
+        repository.Setup(r => r.InsertAsync(It.IsAny<Donation>())).ReturnsAsync(true);
         
         var serviceProvider = GetServiceProvider(paymentProvider, repository);
         var promise = new DonationPromise { Provider = "mollie", Amount = 10, Currency = "EUR", Site = "example.com" };
